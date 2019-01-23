@@ -32,15 +32,15 @@ body {
   display: flex;
   flex-direction: column;
 
+  @include themify() {
+    background: themed('background');
+    color: themed('textColor');
+  }
+
   &__content {
     flex: 1;
     padding: 10px 15px;
     overflow: auto;
-
-    @include themify() {
-      background: themed('background');
-      color: themed('textColor');
-    }
   }
 }
 

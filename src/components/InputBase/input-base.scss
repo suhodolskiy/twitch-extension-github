@@ -1,0 +1,27 @@
+@import '../../stylesheets/mixins/themify';
+
+.input-base {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+
+  &__label {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    padding: 12px 15px;
+    font-size: 14px;
+    line-height: 16px;
+
+    @include themify() {
+      border: 1px solid themed('borderColor');
+      background: themed('inputBackground');
+      color: themed('textColor');
+    }
+  }
+}

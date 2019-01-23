@@ -1,7 +1,7 @@
 import { h } from 'hyperapp'
 import './repository.scss'
 
-import abbrNum from '../../utils/abbr-num'
+import { abbrNum } from '../../utils/utils'
 import IconStar from '../Icons/IconStar'
 import IconFork from '../Icons/IconFork'
 

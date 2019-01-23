@@ -1,14 +1,17 @@
 @import '../../stylesheets/mixins/themify';
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
   background: #24292d;
   padding: 10px 15px;
 
-  color: #fff;
+  &__link-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #fff;
+    text-decoration: none;
+  }
 
   &__avatar {
     border-radius: 3px;

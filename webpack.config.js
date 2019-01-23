@@ -12,11 +12,11 @@ module.exports = (env, argv) => {
       outputHtml: 'panel.html',
       build: true,
     },
-    // Config: {
-    //   path: './src/components/Config/Config.js',
-    //   outputHtml: 'config.html',
-    //   build: true,
-    // },
+    Config: {
+      path: './src/components/Config/Config.js',
+      outputHtml: 'config.html',
+      build: true,
+    },
   }
 
   let entry = {}

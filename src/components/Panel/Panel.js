@@ -1,51 +1,35 @@
 import { h, app } from 'hyperapp'
+import { toggleTheme, abbrNum } from '../../utils/utils'
+import Repository from '../Repository/Repository'
+import IconGithub from '../Icons/IconGithub'
+import twitchApi from '../../api/twitch'
+import githubApi from '../../api/github'
+
 import '../../stylesheets/main.scss'
 import './panel.scss'
 
-import Repository from '../Repository/Repository'
-import IconGithub from '../Icons/IconGithub'
-
-import abbrNum from '../../utils/abbr-num'
-import githubApi from '../../api/github'
-
 app(
   {
-    user: null,
     theme: 'light',
     loading: false,
     error: null,
+    user: null,
   },
   {
     initTwitch: () => (state, actions) => {
-      const twitch = window.Twitch ? window.Twitch.ext : null
-      if (twitch) {
-        twitch.onAuthorized(() => {
-          // twitch.configuration.set(
-          //   'broadcaster',
-          //   '0.0.2',
-          //   JSON.stringify({ login: 'suhodolskiy' })
-          // )
-
-          let config = twitch.configuration.broadcaster
-            ? twitch.configuration.broadcaster.content
-            : null
-
-          try {
-            config = JSON.parse(config)
-          } catch (error) {
-            config = null
-          }
-
-          if (config && config.login) {
-            actions.loadGithubUser(config.login)
+      if (twitchApi.twitch) {
+        twitchApi.twitch.onAuthorized(() => {
+          const configBroadcaster = twitchApi.getConfigurationSegment()
+          if (configBroadcaster && configBroadcaster.login) {
+            actions.loadGithubUser(configBroadcaster.login)
           }
         })
 
-        twitch.onContext((context) => {
+        twitchApi.twitch.onContext((context) => {
           if (context && context.theme) actions.setTheme(context.theme)
         })
 
-        twitch.onError((error) => actions.setError(error))
+        twitchApi.twitch.onError((error) => actions.setError(error))
       }
     },
     loadGithubUser: (login) => async (state, actions) => {
@@ -63,31 +47,32 @@ app(
     },
     setLoading: (state = true) => ({ loading: state }),
     setGithubUser: (user) => ({ user }),
-    setTheme: (theme) => ({ theme }),
+    setTheme: (theme) => (state) => toggleTheme(theme, state.theme),
     setError: (error) => ({ error }),
   },
   (state, actions) => (
-    <div className={`app theme-${state.theme}`} oncreate={actions.initTwitch}>
+    <div className="app" oncreate={actions.initTwitch}>
       <header className="header">
         <a
           href={state.user && state.user.url}
-          className="header__avatar"
+          className="header__link-container"
           rel="noopener noreferrer"
           target="_blank"
         >
-          {state.user && state.user.avatarUrl && (
-            <img src={state.user && state.user.avatarUrl} alt="User avatar" />
-          )}
-        </a>
-        <div className="header__info">
-          <a href={state.user && state.user.url}>
-            {state.user && state.user.name}
-          </a>
-          <div className="header__username">
-            {state.user && state.user.login}
+          <div className="header__avatar">
+            {state.user && state.user.avatarUrl && (
+              <img src={state.user && state.user.avatarUrl} alt="User avatar" />
+            )}
           </div>
-        </div>
-        <a href={state.user && state.user.url}>
+
+          <div className="header__info">
+            <a href={state.user && state.user.url}>
+              {state.user && state.user.name}
+            </a>
+            <div className="header__username">
+              {state.user && state.user.login}
+            </div>
+          </div>
           <IconGithub />
         </a>
       </header>

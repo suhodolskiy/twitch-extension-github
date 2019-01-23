@@ -5,7 +5,7 @@
  * @param decPlaces
  * @returns {*}
  */
-export default (number, decPlaces = 1) => {
+export const abbrNum = (number, decPlaces = 1) => {
   decPlaces = Math.pow(10, decPlaces)
   const abbrev = ['k', 'm', 'b', 't']
 
@@ -24,4 +24,15 @@ export default (number, decPlaces = 1) => {
   }
 
   return number
+}
+
+export const toggleTheme = (theme, oldTheme) => {
+  const body = document.getElementsByTagName('body')[0]
+
+  if (body.classList.contains('theme-' + oldTheme))
+    body.classList.remove('theme-' + oldTheme)
+
+  body.classList.add('theme-' + theme)
+
+  return { theme }
 }
