@@ -1,6 +1,6 @@
 {
   "name": "twitch-extension-github",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "description": "Show your Github profile on your twitch channel!",
   "main": "src/components/Panel/Panel.js",
   "dependencies": {
@@ -14,6 +14,8 @@
     "css-loader": "^2.1.0",
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.6.0",
     "webpack-cli": "^3.1.0",

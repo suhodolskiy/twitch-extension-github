@@ -12,10 +12,19 @@ module.exports = (env, argv) => {
       outputHtml: 'panel.html',
       build: true,
     },
+    // Config: {
+    //   path: './src/components/Config/Config.js',
+    //   outputHtml: 'config.html',
+    //   build: true,
+    // },
   }
 
   let entry = {}
-  let plugins = []
+  let plugins = [
+    new webpack.DefinePlugin({
+      'process.env.GITHUB_TOKEN': JSON.stringify(process.env.GITHUB_TOKEN),
+    }),
+  ]
 
   if (argv.mode === 'development') {
     plugins.push(new webpack.HotModuleReplacementPlugin())
@@ -75,8 +84,8 @@ module.exports = (env, argv) => {
           loader: 'babel-loader',
         },
         {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader'],
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/i,

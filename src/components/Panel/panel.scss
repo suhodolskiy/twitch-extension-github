@@ -1,0 +1,112 @@
+@import '../../stylesheets/mixins/themify';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #24292d;
+  padding: 10px 15px;
+
+  color: #fff;
+
+  &__avatar {
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+
+    background: #ccc;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+
+  &__info {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+
+  &__username {
+    font-size: 13px;
+    color: #9a9a9a;
+  }
+}
+
+.headline {
+  display: flex;
+
+  @include themify() {
+    background: themed('secondBackground');
+    border-bottom: 1px solid themed('borderColor');
+    border-top: 1px solid themed('borderColor');
+  }
+
+  &__item {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+
+    padding: 10px 2px;
+
+    @include themify() {
+      color: themed('textColor');
+    }
+
+    & + & {
+      @include themify() {
+        border-left: 1px solid themed('borderColor');
+      }
+    }
+
+    span {
+      font-weight: 400;
+      font-size: 11px;
+      @include themify() {
+        color: themed('secondTextColor');
+      }
+    }
+  }
+}
+
+.pinned-repos {
+  h2 {
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  ol {
+    list-style: none;
+    margin-top: 0;
+    padding-left: 0;
+  }
+}
+
+.footer {
+  padding: 10px 15px;
+
+  @include themify() {
+    border-bottom: 1px solid themed('borderColor');
+    border-top: 1px solid themed('borderColor');
+    background: themed('secondBackground');
+  }
+}

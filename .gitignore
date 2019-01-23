@@ -66,5 +66,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# Twitch
+bin/
+
 # Finalized files
 dist/
