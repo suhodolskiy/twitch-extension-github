@@ -1,4 +1,5 @@
 @import '../../stylesheets/mixins/themify';
+@import '../../stylesheets/mixins/ellipsis';
 
 .header {
   background: #24292d;
@@ -21,8 +22,6 @@
     max-width: 32px;
     max-height: 32px;
 
-    background: #ccc;
-
     img {
       width: 100%;
       height: 100%;
@@ -44,6 +43,8 @@
   &__username {
     font-size: 13px;
     color: #9a9a9a;
+
+    @include ellipsis();
   }
 }
 

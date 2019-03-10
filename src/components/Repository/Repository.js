@@ -1,7 +1,7 @@
 import { h } from 'hyperapp'
 import './repository.scss'
 
-import { abbrNum } from '../../utils/utils'
+import { abbrNum } from '../../libs/utils'
 import IconStar from '../Icons/IconStar'
 import IconFork from '../Icons/IconFork'
 
@@ -17,7 +17,7 @@ export default (repo) => (
         {repo.owner.login}
         <b>/{repo.name}</b>
       </div>
-      <p>{repo.description}</p>
+      <p className="repo-card__desc">{repo.description}</p>
       <div>
         <a className="repo-card__meta" href="">
           <span

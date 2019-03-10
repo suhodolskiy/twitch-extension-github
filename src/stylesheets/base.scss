@@ -45,7 +45,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -53,7 +53,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #929292;
+  background: #a9a9a9;
   cursor: pointer;
 
   &:hover {

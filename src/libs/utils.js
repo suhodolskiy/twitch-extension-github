@@ -1,3 +1,5 @@
+import * as constants from './constants'
+
 /**
  * 999 -> 999, 1300 -> 1.3k
  * https://stackoverflow.com/questions/2685911/is-there-a-way-to-round-numbers-into-a-reader-friendly-format-e-g-1-1k
@@ -36,3 +38,6 @@ export const toggleTheme = (theme, oldTheme) => {
 
   return { theme }
 }
+
+export const isPersonalType = (type) =>
+  type === constants.GITHUB_PROFILE_TYPE_PERSONAL

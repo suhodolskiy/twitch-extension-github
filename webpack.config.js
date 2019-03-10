@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const bundlePath = path.resolve(__dirname, 'dist/')
@@ -85,7 +86,22 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.scss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: [
+                  autoprefixer({
+                    browsers: ['ie >= 8', 'last 4 version'],
+                  }),
+                ],
+                sourceMap: true,
+              },
+            },
+          ],
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/i,

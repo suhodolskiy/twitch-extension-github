@@ -1,4 +1,5 @@
 @import '../../stylesheets/mixins/themify';
+@import '../../stylesheets/mixins/ellipsis';
 
 .repo-card {
   display: block;
@@ -20,7 +21,7 @@
     }
   }
 
-  p {
+  &__desc {
     margin-bottom: 4px;
     margin-top: 2px;
 
@@ -28,6 +29,7 @@
     @include themify() {
       color: themed('secondTextColor');
     }
+    @include ellipsis(3);
   }
 
   &__color {

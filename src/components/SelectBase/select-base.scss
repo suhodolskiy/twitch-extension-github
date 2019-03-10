@@ -1,12 +1,11 @@
 @import '../../stylesheets/mixins/themify';
 
-.input-base {
+.select-base {
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
 
   &__label {
-    margin-bottom: 5px;
     font-size: 12px;
   }
 
@@ -15,13 +14,21 @@
     margin-top: 5px;
   }
 
-  input {
+  &__arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  select {
     display: block;
     width: 100%;
     border-radius: 3px;
     padding: 12px 15px;
     font-size: 14px;
     line-height: 16px;
+    appearance: none;
 
     @include themify() {
       border: 1px solid themed('borderColor');

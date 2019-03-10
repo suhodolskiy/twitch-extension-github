@@ -11,7 +11,7 @@ const request = (query) =>
     .then((response) => response.data)
 
 /**
- * Load github user profile
+ * Load github personal/company profile
  * @param login
  * @returns {*}
  */
@@ -56,6 +56,47 @@ export default {
 			            }
 			            forkCount
 			          }
+			        }
+			      }
+			    }
+			  }
+			}`
+    )
+  },
+  getOrganization(login) {
+    return request(
+      `{
+			  organization(login: "${login}") {
+			    name
+			    login
+			    url
+			    avatarUrl
+			    description
+			    repositories {
+			      totalCount
+			    }
+					websiteUrl
+			    membersWithRole {
+			      totalCount
+			    }
+			    pinnedRepositories(first: 6) {
+			      edges {
+			        node {
+			          id
+			          url
+			          owner {
+			            login
+			          }
+			          name
+			          description
+			          stargazers {
+			            totalCount
+			          }
+			          primaryLanguage {
+			            color
+			            name
+			          }
+			          forkCount
 			        }
 			      }
 			    }
