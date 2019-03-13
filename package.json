@@ -1,6 +1,6 @@
 {
   "name": "twitch-extension-github",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Show your Github profile on your twitch channel!",
   "dependencies": {
     "hyperapp": "*"
