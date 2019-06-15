@@ -14,26 +14,31 @@ export default (repo) => (
       target="_blank"
     >
       <div className="repo-card__name">
-        {repo.owner.login}
+        {repo.owner && repo.owner.login}
         <b>/{repo.name}</b>
       </div>
       <p className="repo-card__desc">{repo.description}</p>
       <div>
-        <a className="repo-card__meta" href="">
-          <span
-            className="repo-card__color"
-            style={{ background: repo.primaryLanguage.color }}
-          />
-          {repo.primaryLanguage.name}
-        </a>
-        <a className="repo-card__meta" href="">
-          <IconStar />
-          {abbrNum(repo.stargazers.totalCount)}
-        </a>
-        <a className="repo-card__meta" href="">
+        {repo.primaryLanguage && (
+          <span className="repo-card__meta">
+            <span
+              className="repo-card__color"
+              style={{ background: repo.primaryLanguage.color }}
+            />
+            {repo.primaryLanguage.name}
+          </span>
+        )}
+
+        {repo.stargazers && (
+          <span className="repo-card__meta">
+            <IconStar />
+            {abbrNum(repo.stargazers.totalCount)}
+          </span>
+        )}
+        <span className="repo-card__meta">
           <IconFork />
           {abbrNum(repo.forkCount)}
-        </a>
+        </span>
       </div>
     </a>
   </li>
