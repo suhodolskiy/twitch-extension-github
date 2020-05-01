@@ -70,8 +70,8 @@ app(
                   label: 'Personal',
                 },
                 {
-                  value: constants.GITHUB_PROFILE_TYPE_COMPANY,
-                  label: 'Company',
+                  value: constants.GITHUB_PROFILE_TYPE_ORGANIZAATION,
+                  label: 'Organization',
                 },
               ]}
               onChange={actions.setType}
