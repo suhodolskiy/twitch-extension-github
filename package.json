@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "Show your Github profile on your twitch channel!",
   "dependencies": {
-    "hyperapp": "*"
+    "hyperapp": "^1.2.10"
   },
   "devDependencies": {
     "autoprefixer": "^9.4.10",
@@ -26,7 +26,7 @@
     "test": "exit 1",
     "build": "webpack -p",
     "start": "webpack-dev-server --mode development",
-    "cert": "./bin/generate_cert.sh server",
+    "cert": "node bin/generate_cert.js server",
     "host": "webpack-dev-server --mode development --devrig"
   },
   "keywords": [

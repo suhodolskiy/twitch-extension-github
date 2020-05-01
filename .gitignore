@@ -67,7 +67,7 @@ typings/
 .env
 
 # Twitch
-bin/
+conf/
 
 # Finalized files
 dist/
