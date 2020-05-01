@@ -37,9 +37,9 @@ export default {
 			      following {
 			        totalCount
 			      }
-			      pinnedRepositories(first: 6) {
-			        edges {
-			          node {
+			      pinnedItems(first: 6, types: REPOSITORY) {
+			        nodes {
+			          ... on Repository {
 			            id
 			            url
 			            owner {
@@ -79,9 +79,9 @@ export default {
 			    membersWithRole {
 			      totalCount
 			    }
-			    pinnedRepositories(first: 6) {
-			      edges {
-			        node {
+			    pinnedItems(first: 6, types: REPOSITORY) {
+			      nodes {
+			        ... on Repository {
 			          id
 			          url
 			          owner {

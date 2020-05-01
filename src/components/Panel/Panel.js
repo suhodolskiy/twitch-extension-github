@@ -177,11 +177,11 @@ app(
       <div className="app__content">
         {state.error}
         {state.loading && 'Loading ...'}
-        {state.profile && state.profile.pinnedRepositories && (
+        {state.profile && state.profile.pinnedItems && (
           <div className="pinned-repos">
             <h2>Pinned repositories</h2>
             <ol>
-              {state.profile.pinnedRepositories.edges.map(({ node }) => (
+              {state.profile.pinnedItems.nodes.map((node) => (
                 <Repository {...node} key={node.id} />
               ))}
             </ol>
