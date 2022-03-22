@@ -1,74 +1,51 @@
-const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const bundlePath = path.resolve(__dirname, 'dist/')
+const bundlePath = path.resolve(__dirname, 'dist')
 
 module.exports = (env, argv) => {
-  const entryPoints = {
-    Panel: {
-      path: './src/components/Panel/Panel.js',
-      outputHtml: 'panel.html',
-      build: true,
-    },
-    Config: {
-      path: './src/components/Config/Config.js',
-      outputHtml: 'config.html',
-      build: true,
-    },
-  }
-
-  let entry = {}
-  let plugins = [
+  const plugins = [
     new webpack.DefinePlugin({
       'process.env.GITHUB_TOKEN': JSON.stringify(process.env.GITHUB_TOKEN),
     }),
+    new MiniCssExtractPlugin({
+      filename: '[name].style.css',
+    }),
   ]
 
-  if (argv.mode === 'development') {
-    plugins.push(new webpack.HotModuleReplacementPlugin())
-  }
+  const entries = {}
 
-  for (let name in entryPoints) {
-    if (entryPoints[name].build) {
-      entry[name] = entryPoints[name].path
+  for (const entry of ['panel', 'config']) {
+    entries[entry] = `./src/components/${entry}/index.ts`
 
-      if (argv.mode === 'production') {
-        plugins.push(
-          new HtmlWebpackPlugin({
-            inject: true,
-            chunks: [name],
-            template: './src/template.html',
-            filename: entryPoints[name].outputHtml,
-          })
-        )
-      }
-    }
+    plugins.push(
+      new HtmlWebpackPlugin({
+        filename: `${entry}.html`,
+        template: `./src/components/${entry}/index.html`,
+        chunks: [entry],
+        title: 'Twitch Extension Github',
+      })
+    )
   }
 
   let devServer
   if (argv.mode === 'development') {
     devServer = {
       contentBase: path.join(__dirname, 'public'),
-      host: argv.devrig ? 'localhost.rig.twitch.tv' : 'localhost',
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
       port: 8080,
     }
 
-    if (fs.existsSync(path.resolve(__dirname, 'conf/server.key'))) {
-      devServer.https = {
-        key: fs.readFileSync(path.resolve(__dirname, 'conf/server.key')),
-        cert: fs.readFileSync(path.resolve(__dirname, 'conf/server.crt')),
-      }
-    }
+    plugins.push(new webpack.HotModuleReplacementPlugin())
   }
 
   return {
-    entry,
+    entry: entries,
     devServer,
     optimization: {
       minimize: true,
@@ -79,15 +56,11 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /(node_modules|bower_components)/,
-          loader: 'babel-loader',
-        },
+        { test: /\.ts$/, use: 'ts-loader', exclude: /node_modules/ },
         {
           test: /\.scss$/,
           use: [
-            'style-loader',
+            MiniCssExtractPlugin.loader,
             'css-loader',
             'sass-loader',
             {
@@ -103,15 +76,10 @@ module.exports = (env, argv) => {
             },
           ],
         },
-        {
-          test: /\.(jpe?g|png|gif|svg)$/i,
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'images',
-          },
-        },
       ],
+    },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     plugins,
   }

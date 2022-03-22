@@ -1,5 +1,3 @@
-import * as constants from './constants'
-
 /**
  * 999 -> 999, 1300 -> 1.3k
  * https://stackoverflow.com/questions/2685911/is-there-a-way-to-round-numbers-into-a-reader-friendly-format-e-g-1-1k
@@ -7,7 +5,7 @@ import * as constants from './constants'
  * @param decPlaces
  * @returns {*}
  */
-export const abbrNum = (number, decPlaces = 1) => {
+export const abbrNum = (number: any, decPlaces = 1) => {
   decPlaces = Math.pow(10, decPlaces)
   const abbrev = ['k', 'm', 'b', 't']
 
@@ -28,16 +26,17 @@ export const abbrNum = (number, decPlaces = 1) => {
   return number
 }
 
-export const toggleTheme = (theme, oldTheme) => {
-  const body = document.getElementsByTagName('body')[0]
+export const toggleTheme = <T = string | undefined>(
+  theme: T,
+  oldTheme?: T
+): T => {
+  if (document.body?.classList.contains('theme-' + oldTheme))
+    document.body.classList.remove('theme-' + oldTheme)
 
-  if (body.classList.contains('theme-' + oldTheme))
-    body.classList.remove('theme-' + oldTheme)
+  document.body?.classList.add('theme-' + theme)
 
-  body.classList.add('theme-' + theme)
-
-  return { theme }
+  return theme
 }
 
-export const isPersonalType = (type) =>
-  type === constants.GITHUB_PROFILE_TYPE_PERSONAL
+export const asyncTimeout = (timeout: number = 100) =>
+  new Promise((r) => setTimeout(r, timeout))

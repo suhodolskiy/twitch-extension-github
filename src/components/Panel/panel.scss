@@ -50,6 +50,7 @@
 
 .headline {
   display: flex;
+  min-height: 50px;
 
   @include themify() {
     background: themed('secondBackground');

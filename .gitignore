@@ -29,8 +29,6 @@ coverage
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
-# Bower dependency directory (https://bower.io/)
-bower_components
 
 # node-waf configuration
 .lock-wscript
@@ -59,15 +57,6 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
-
-# IDE
-.idea/
-
-# dotenv environment variables file
-.env
-
-# Twitch
-conf/
 
 # Finalized files
 dist/

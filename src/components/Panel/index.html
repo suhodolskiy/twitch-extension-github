@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+</head>
+
+<body>
+  <div class="app">
+    <header class="header">
+      <a class="header__link-container profile-link" rel="noopener noreferrer" target="_blank">
+        <div id="avatar" class="header__avatar">
+        </div>
+
+        <div class="header__info">
+          <span id="name"></span>
+          <div id="username" class="header__username"></div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" version="1.1" height="26" width="26">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(-458.000000, -118.000000)" fill="currentColor">
+              <g transform="translate(184.000000, 101.000000)">
+                <g transform="translate(274.000000, 17.000000)">
+                  <path
+                    d="M13 0C5.8 0 0 5.8 0 13 0 18.8 3.7 23.6 8.9 25.3 9.5 25.4 9.8 25.1 9.8 24.7 9.8 24.4 9.8 23.4 9.8 22.3 6.5 22.9 5.7 21.5 5.4 20.8 5.2 20.4 4.6 19.2 4.1 18.9 3.6 18.7 3 18.1 4 18.1 5.1 18.1 5.8 19 6 19.4 7.2 21.4 9.1 20.8 9.8 20.5 9.9 19.6 10.3 19.1 10.7 18.7 7.8 18.4 4.7 17.3 4.7 12.3 4.7 10.9 5.2 9.7 6.1 8.8 5.9 8.5 5.5 7.2 6.2 5.4 6.2 5.4 7.3 5 9.8 6.7 10.8 6.4 11.9 6.3 13 6.3 14.1 6.3 15.2 6.4 16.3 6.7 18.8 5 19.9 5.4 19.9 5.4 20.6 7.2 20.1 8.5 20 8.8 20.8 9.7 21.3 10.9 21.3 12.3 21.3 17.3 18.3 18.4 15.4 18.7 15.9 19.1 16.3 19.9 16.3 21.1 16.3 22.9 16.3 24.3 16.3 24.7 16.3 25.1 16.5 25.5 17.1 25.3 22.4 23.5 26 18.6 26 13 26 5.8 20.2 0 13 0Z" />
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </a>
+    </header>
+    <nav id="headline" class="headline">
+    </nav>
+    <div id="content" class="app__content">
+    </div>
+    <footer class="footer">
+      <a class="btn btn--block btn--primary profile-link" rel="noopener noreferrer" target="_blank">
+        Follow
+      </a>
+    </footer>
+  </div>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+</body>
+</html>
