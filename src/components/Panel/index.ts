@@ -37,11 +37,17 @@ const init = () => {
             ? await githubApi.getUser(config.login)
             : await githubApi.getOrganization(config.login)
 
-        if (profile?.login) {
-          renderProfile(profile, type)
+        if (!profile?.login) {
+          throw new Error('User not found')
         }
-      } catch (err) {
-        renderState(`Failed to load github profile. ${err}`)
+
+        renderProfile(profile, type)
+      } catch (err: unknown) {
+        renderState(
+          `Failed to load github profile. ${
+            err instanceof Error ? err.message : err
+          }`
+        )
         throw err
       }
     }

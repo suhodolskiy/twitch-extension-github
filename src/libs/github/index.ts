@@ -69,7 +69,7 @@ export default {
 			}`
     ).then((response) => response.repositoryOwner)
 
-    if (!response.login) return
+    if (!response?.login) return
 
     const repositories: IRepository[] = []
 

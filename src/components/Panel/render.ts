@@ -37,7 +37,7 @@ const getRepositoryHtml = (repo: IRepository, profile: IProfile): string => {
         <div class="repo-card__name">
           ${profile.login}<b>/${repo.name}</b>
         </div>
-        <p class="repo-card__desc">${repo.description}</p>
+        <p class="repo-card__desc">${repo.description ?? ''}</p>
         <div>
           ${languageHtml}
 
@@ -132,7 +132,7 @@ export const renderProfile = (profile: IProfile, type: number) => {
   }
 
   const headlineNode = document.getElementById('headline')
-  if (headlineNode) {
+  if (headlineNode && !headlineNode.childElementCount) {
     for (const item of headlineItems) {
       headlineNode.innerHTML += getHeadlineHtml(item)
     }
