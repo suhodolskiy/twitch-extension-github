@@ -35,7 +35,7 @@ const getRepositoryHtml = (repo: IRepository, profile: IProfile): string => {
         target="_blank"
       >
         <div class="repo-card__name">
-          ${profile.login}<b>/${repo.name}</b>
+          ${repo.owner}<b>/${repo.name}</b>
         </div>
         <p class="repo-card__desc">${repo.description ?? ''}</p>
         <div>

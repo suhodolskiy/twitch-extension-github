@@ -79,6 +79,7 @@ export default {
         name: node.name,
         url: node.url,
         description: node.description,
+        owner: node.owner.login,
         language: {
           color: node.primaryLanguage?.color,
           name: node.primaryLanguage?.name,
@@ -160,6 +161,7 @@ export default {
         name: node.name,
         url: node.url,
         description: node.description,
+        owner: node.owner.login,
         language: node.primaryLanguage && {
           color: node.primaryLanguage.color,
           name: node.primaryLanguage.name,

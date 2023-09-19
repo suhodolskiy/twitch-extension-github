@@ -62,6 +62,7 @@ export interface IRepository {
   name: string
   url: string
   description?: string
+  owner: string
   language?: {
     color: string
     name: string
