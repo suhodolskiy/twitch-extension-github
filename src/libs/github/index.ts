@@ -80,10 +80,12 @@ export default {
         url: node.url,
         description: node.description,
         owner: node.owner.login,
-        language: {
-          color: node.primaryLanguage?.color,
-          name: node.primaryLanguage?.name,
-        },
+        language: node.primaryLanguage
+          ? {
+              color: node.primaryLanguage.color,
+              name: node.primaryLanguage.name,
+            }
+          : undefined,
         count: {
           stars: node.stargazers.totalCount,
           forks: node.forkCount,

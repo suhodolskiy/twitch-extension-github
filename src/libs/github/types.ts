@@ -9,7 +9,7 @@ export interface IGithubRepository {
   stargazers: {
     totalCount: number
   }
-  primaryLanguage: {
+  primaryLanguage?: {
     color: string
     name: string
   }
